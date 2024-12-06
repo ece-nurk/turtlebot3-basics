@@ -54,8 +54,8 @@ def eskenarUcgen():
     hiz_msg.angular.z = donusHizi
     pub.publish(hiz_msg)
     rospy.sleep(donusAci / donusHizi)
-    hiz_msg.angular.z = 0.0
 
+    hiz_msg.angular.x = 0.0
     hiz_msg.angular.z = 0.0
     pub.publish(hiz_msg)
     rospy.sleep(1)
