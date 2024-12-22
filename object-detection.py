@@ -67,7 +67,7 @@ def hareket():
         cx = nesneMerkez[0]
         fark = cx - merkez_x
 
-        if mesafe is not None and mesafe < 3:
+        if mesafe is not None and mesafe < 2:
             twist.linear.x = 0.0
             twist.angular.z = 0.0
             hedefe_ulaşıldı = True
