@@ -8,4 +8,4 @@ Turtlebot3 kullanarak yapılmış basit projeler
 
 ## İçerik
 - Temel hareket komutları
-- Engelden tespiti (lidar)
+- Engel tespiti (lidar)
