@@ -12,7 +12,7 @@ bridge = CvBridge()
 hizPub = None
 nesneMerkez = None
 mesafe = None
-hedefe_ulaşıldı = False  # flag
+hedefe_ulasildi = False  # flag
 
 def kamera_callback(mesaj):
     global nesneMerkez
@@ -42,19 +42,19 @@ def kamera_callback(mesaj):
     cv2.waitKey(1)
 
 def lidar_callback(veri):
-    global mesafe, hedefe_ulaşıldı
-    if not hedefe_ulaşıldı:  
-        geçerli_mesafeler = [m for m in veri.ranges if not np.isnan(m)]
-        if geçerli_mesafeler:
-            mesafe = float(min(geçerli_mesafeler))
+    global mesafe, hedefe_ulasildi
+    if not hedefe_ulasildi:  
+        gecerli_mesafeler = [m for m in veri.ranges if not np.isnan(m)]
+        if gecerli_mesafeler:
+            mesafe = float(min(gecerli_mesafeler))
         else:
             mesafe = None
 
 def hareket():
-    global nesneMerkez, mesafe, hedefe_ulaşıldı
+    global nesneMerkez, mesafe, hedefe_ulasildi
     twist = Twist()
     
-    if hedefe_ulaşıldı:
+    if hedefe_ulasildi:
         twist.linear.x = 0.0
         twist.angular.z = 0.0
         rospy.loginfo("Nesnenin merkezine geldi ve durdu")
@@ -70,7 +70,7 @@ def hareket():
         if mesafe is not None and mesafe < 2:
             twist.linear.x = 0.0
             twist.angular.z = 0.0
-            hedefe_ulaşıldı = True
+            hedefe_ulasildi = True
             rospy.loginfo("Nesnenin merkezine geldi ve durdu")
         else:
             twist.linear.x = 0.5
